@@ -1,5 +1,12 @@
 const router = require('express').Router()
 
+// new places
+router.get('/new', (req, res) => {
+  res.render('places/new')
+})
+
+
+
 // get places
 router.get('/', (req, res) => {
     let places = [{
@@ -20,6 +27,7 @@ router.get('/', (req, res) => {
       
     res.render('places/index', { places })
 })
+
 
 
 module.exports = router
