@@ -19,15 +19,18 @@ function edit_form (data){
                     </div>
 
                     <div className='row'>
-                        <div className='form-group col-sm-6'>
+                        <div className='form-group col-sm-4'>
                             <label htmlFor='city'>City</label>
                             <input className='form-control' id="city" name="city" value={data.place.city}></input>
                         </div>
-                        <div className='form-group col-sm-6'>
+                        <div className='form-group col-sm-4'>
                             <label htmlFor='state'>State</label>
                             <input className='form-control' id="state" name="state" value={data.place.state}></input>
                         </div>
-                         
+                        <div className="form-group col-sm-4">
+                            <label htmlFor="founded">Founding Year</label>
+                            <input className="form-control" id="founded" name="founded" value={data.place.founded} />
+                        </div>         
                     </div>
 
                     <div className='form-group'>
