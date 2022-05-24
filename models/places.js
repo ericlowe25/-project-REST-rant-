@@ -13,7 +13,7 @@
 // }]
 
 const mongoose = require('mongoose')
-const db = require('../models')
+//const db = require('../models')
 
 const placeSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -21,10 +21,10 @@ const placeSchema = new mongoose.Schema({
   cuisines: { type: String, required: true },
   city: { type: String, default: 'Raleigh' },
   state: { type: String, default: 'NC' },
-  founded: { 
-    type: Number,
-    min: [2000, 'how old?'],
-    max: [new Date().getFullYear(), "Hey, this year is in the future!"],}
+  founded: Number,
 })
+// plsceSchema.methods.showEstablished = function() {
+//   return `${this.name} has been serving ${this.city}, ${this.state} since ${this.founded}.`
+// }
 
 module.exports = mongoose.model('Place', placeSchema)
