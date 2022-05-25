@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   // res.render('places/index', {places})
   // res.send('GET /places stub')
   db.Place.find()
-  .then(places => {
+  .then((places) => {
     res.render('places/index', {places})
   })
   .catch(err => {
@@ -32,17 +32,27 @@ router.post('/', (req, res) => {
   //   req.body.state = 'USA'
   // }
   // places.push(req.body)
-  if (req.body.pic === '') {req.body.pic = undefined}
-  if (req.body.city === '') {req.body.city = undefined}
-  if (req.body.state === '') {req.body.state = undefined}
+  // if (req.body.pic === '') {req.body.pic = undefined}
+  // if (req.body.city === '') {req.body.city = undefined}
+  // if (req.body.state === '') {req.body.state = undefined}
   db.Place.create(req.body)
   .then(() => {
-    res.redirect('/places')
+    res.redirect('/places');
   })
-  .catch (err => {
-    // console.log('err', err)
-    res.render('error404')
-  }) 
+  .catch(err => {
+    if(err && err.name === 'ValidationError'){
+      let message = 'Validation Error:'
+      for(var field in err.errors){
+        message+= `${field} was ${err.errors[field].value}.`
+        message+= `${err.errors[field].message}`
+      }
+      console.log('Validation error message', message)
+      res.render('places/new', {message})
+    }
+    else{
+      res.render('error404');
+    }
+  })
 })
 
 //  GET NEW: places
