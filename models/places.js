@@ -21,10 +21,10 @@ const placeSchema = new mongoose.Schema({
   cuisines: { type: String, required: true },
   city: { type: String, default: 'Raleigh' },
   state: { type: String, default: 'NC' },
-  founded: Number,
+  founded: Number
 })
-// plsceSchema.methods.showEstablished = function() {
-//   return `${this.name} has been serving ${this.city}, ${this.state} since ${this.founded}.`
-// }
+placeSchema.methods.showEstablished = function() {
+  return `${this.name} has been serving ${this.city}, ${this.state} since ${this.founded}.`
+ }
 
 module.exports = mongoose.model('Place', placeSchema)
