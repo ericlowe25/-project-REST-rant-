@@ -74,11 +74,13 @@ router.get('/:id', (req,res) =>{
   //    res.render('places/show', {place: places[id], id})
   // res.send('GET /places/:id stub')
   db.Place.findById(req.params.id)
+  .populate('comments')
   .then(place => {
+    console.log(place.comments)
     res.render('places/show', {place})
   })
   .catch (err => {
-    // console.log('err', err)
+    console.log('err', err)
     res.render('error404')
   }) 
 })
