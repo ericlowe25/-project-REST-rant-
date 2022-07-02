@@ -10,8 +10,8 @@ h1 {
 
 
 img{
-  width: 100%;
-  height: auto;
+  /* width: 100%; */
+  height: 20em;
 } 
 
 nav{
@@ -47,6 +47,7 @@ body {
 main {
   margin-right: 20px;
   margin-left: 20px;
+  padding: 20px;
   background-color: white;
 }
 
